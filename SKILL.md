@@ -1,19 +1,16 @@
 ---
 name: Forge v5
-description: >
-  Autonomous execution engine for complex, multi-step development tasks.
-  Full lifecycle: research → plan → implement → review → deliver.
-  Trigger when: implementing features, refactoring, building apps, adding auth,
-  migrating APIs, increasing test coverage, writing/organizing docs (API docs,
-  README, Swagger), security audits, code reviews, performance profiling,
-  Docker/CI-CD/deploy setup, architecture/schema/API design, or any multi-file
-  task that benefits from structured planning. Works in Korean, English, or any
-  language. Examples: "기능 구현해줘", "리팩토링해줘", "앱 만들어줘", "문서 작성해줘",
-  "보안 분석해줘", "CI/CD 설정해줘", "아키텍처 설계해줘", "기능추가", "전면 수정",
-  "implement user auth", "refactor to clean architecture", "build a CLI tool".
-  Do NOT trigger for: single-line edits, one variable rename, simple commands
-  (git log, npm install), quick questions, or trivial config changes.
-  When in doubt, trigger.
+description: |
+  사용자가 /forge 커맨드를 입력하거나, 복잡한 멀티파일 개발 작업을 요청할 때 이 스킬을 사용하세요.
+  코딩(기능 구현, 리팩토링, 앱 구축, 버그 수정), 문서화(API docs, README, Swagger),
+  분석(보안 감사, 코드 리뷰, 성능 프로파일링), 인프라(Docker, CI/CD, 배포),
+  설계(아키텍처, 스키마, API 설계) 등 리서치→계획→구현→리뷰→배포 전체 라이프사이클을 자동 수행합니다.
+
+  트리거 패턴:
+  - `/forge "요청"` → 명시적 실행
+  - `/forge --direct` → 리서치/플랜 스킵, 바로 실행
+  - `/forge --from plan.md` → 기존 플랜에서 시작
+  - 복잡한 개발 요청 자동 감지 (멀티파일, 멀티스텝, 기능추가, 전면 수정, refactor, build, implement)
 ---
 
 # Forge v5
