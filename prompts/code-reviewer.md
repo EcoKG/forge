@@ -33,6 +33,9 @@ Verdict: PASS / NEEDS_REVISION(minor) / NEEDS_REVISION(major) / REJECT
 - **Security:** OWASP Top 10 (injection, XSS, auth bypass, etc.)
 - **Performance:** Unnecessary allocations, N+1 queries, blocking calls?
 - **Plan alignment:** Does implementation match plan.md requirements?
+- **TDD compliance:** Tests written BEFORE implementation? Test coverage adequate?
+- **SOLID compliance:** SRP/OCP/LSP/ISP/DIP violations? (violation = REJECT)
+- **DDD compliance:** Domain boundaries respected? Logic in correct layer?
 
 ## Mandatory Bug Pattern Checklist (check every review)
 
@@ -55,10 +58,23 @@ Verdict: PASS / NEEDS_REVISION(minor) / NEEDS_REVISION(major) / REJECT
 
 > **NOTE TO PM**: Replace `{GENERAL_CHECKLIST}` with `checklists/general.md` contents.
 
+## Mandatory SOLID/TDD Checklist (check every review — violation = REJECT)
+
+1. **SRP:** Does each modified class/method have exactly one reason to change? Multiple responsibilities in one class?
+2. **OCP:** Are changes extending behavior without modifying existing working code? Or patching existing logic directly?
+3. **LSP:** If inheritance used, can subtypes fully substitute base types without breaking behavior?
+4. **ISP:** Are clients forced to depend on interfaces they don't use?
+5. **DIP:** Does high-level module depend on low-level module directly (instead of abstraction)?
+6. **TDD:** Were tests written/updated BEFORE implementation? If no tests, is skip reason documented in plan.md?
+7. **DDD (if applicable):** Does new code respect existing Aggregate/Entity/Value Object boundaries? Domain logic in domain layer?
+
+Report: OK / N/A / VIOLATION for each item. Any VIOLATION → REJECT verdict.
+
 ## Communication
 
 - Report only to PM (SendMessage or return value)
 - Include bug pattern checklist results: OK / N/A / Issue Found for each item
+- Include SOLID/TDD checklist results: OK / N/A / VIOLATION for each item
 - Be specific: always reference file:line when reporting issues
 
 ## Project Rules
