@@ -10,7 +10,7 @@ description: |
   - `/forge "요청"` → 명시적 실행
   - `/forge --direct` → 리서치/플랜 스킵, 바로 실행
   - `/forge --from plan.md` → 기존 플랜에서 시작
-  - 복잡한 개발 요청 자동 감지 (멀티파일, 멀티스텝, 기능추가, 전면 수정, refactor, build, implement)
+  - 복잡한 개발 요청 자동 감지 (멀티파일, 멀티스텝, 기능추가, 전면 수정, refactor, build, implement, 처리, 추가, 개발, 변경, 적용, 작업, ~하게 해줘, ~되도록)
 
   [절대 규칙 — 컴팩트 후에도 반드시 유지]
   (1) Step 1-4 완료 전 코드 생성 금지 (2) 자동트리거 시 AskUserQuestion 확인 후 Step 1 진입 필수
@@ -115,7 +115,7 @@ Forge는 두 가지 방식으로 활성화된다:
 
 | 유형 | 트리거 키워드 | 플로우 | 에이전트 (`prompts/` 기준) |
 |---|---|---|---|
-| `code` | bug, fix, implement, refactor, feature, build, create, 구현, 만들어, 고쳐, 수정 | 리서치→계획→구현→리뷰→QA | implementer + code-reviewer + qa-inspector |
+| `code` | bug, fix, implement, refactor, feature, build, create, 구현, 만들어, 고쳐, 수정, 처리, 추가, 개발, 변경, 적용, 작업, 세팅, 연동, 표기, 설치, 제한 | 리서치→계획→구현→리뷰→QA | implementer + code-reviewer + qa-inspector |
 | `docs` | document, write, translate, README, 문서, 작성, 번역 | 리서치→작성→문서 리뷰 | implementer + doc-reviewer |
 | `analysis` | analyze, audit, profile, inspect, 분석, 감사, 검사 | 리서치→보고서 (구현 없음) | analyst |
 | `infra` | deploy, CI/CD, config, environment, 배포, 설정, 환경 | 리서치→계획→실행 (dry-run) | implementer |
