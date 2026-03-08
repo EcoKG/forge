@@ -1,25 +1,19 @@
 ---
-name: forge
+name: Forge v5
 description: >
-  Autonomous execution engine for complex development tasks. Handles the full lifecycle:
-  research, plan, implement, review, deliver. Use this skill whenever the user asks for
-  substantial coding work (implement features, refactor modules, build applications, add
-  authentication, migrate APIs, increase test coverage), documentation (write or organize
-  API docs, README, Swagger specs, translate docs), analysis (security audit, code review,
-  performance profiling, vulnerability report), infrastructure (Docker Compose setup,
-  CI/CD pipelines, deploy configs, environment provisioning), or architecture/design work
-  (microservice design, schema design, system architecture, API design). The key signal
-  is complexity: does the request involve multiple files, multiple steps, or benefit from
-  research and planning? If yes, trigger. Trigger for any language — Korean, English, or
-  others. Examples: "OAuth2 소셜 로그인 붙여줘", "대시보드 앱 만들어줘", "보안 취약점
-  리포트 작성해줘", "Docker Compose로 개발환경 세팅해줘", "마이크로서비스 아키텍처
-  설계해줘", "테스트 커버리지 올려줘", "REST API를 GraphQL로 마이그레이션해줘",
-  "refactor the auth module to clean architecture", "build a CLI tool in Go",
-  "write API documentation for 30 endpoints". Do NOT trigger for single-line edits
-  (adding a missing return, fixing a typo, renaming one variable), simple commands
-  (git log, npm install, file reads), quick questions (error message explanations),
-  or trivial config changes (toggling a flag, bumping a version number, adding one env var).
-  When in doubt, trigger — it's better to offer structured execution than to miss a complex task.
+  Autonomous execution engine for complex, multi-step development tasks.
+  Full lifecycle: research → plan → implement → review → deliver.
+  Trigger when: implementing features, refactoring, building apps, adding auth,
+  migrating APIs, increasing test coverage, writing/organizing docs (API docs,
+  README, Swagger), security audits, code reviews, performance profiling,
+  Docker/CI-CD/deploy setup, architecture/schema/API design, or any multi-file
+  task that benefits from structured planning. Works in Korean, English, or any
+  language. Examples: "기능 구현해줘", "리팩토링해줘", "앱 만들어줘", "문서 작성해줘",
+  "보안 분석해줘", "CI/CD 설정해줘", "아키텍처 설계해줘", "기능추가", "전면 수정",
+  "implement user auth", "refactor to clean architecture", "build a CLI tool".
+  Do NOT trigger for: single-line edits, one variable rename, simple commands
+  (git log, npm install), quick questions, or trivial config changes.
+  When in doubt, trigger.
 ---
 
 # Forge v5
