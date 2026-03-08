@@ -11,6 +11,11 @@ description: |
   - `/forge --direct` → 리서치/플랜 스킵, 바로 실행
   - `/forge --from plan.md` → 기존 플랜에서 시작
   - 복잡한 개발 요청 자동 감지 (멀티파일, 멀티스텝, 기능추가, 전면 수정, refactor, build, implement)
+
+  [절대 규칙 — 컴팩트 후에도 반드시 유지]
+  (1) Step 1-4 완료 전 코드 생성 금지 (2) 자동트리거 시 AskUserQuestion 확인 후 Step 1 진입 필수
+  (3) --direct는 사용자가 명시적으로 요청한 경우에만 사용 (4) 필수 단계 순서 건너뛰기 금지
+  (5) 컨텍스트 손실 감지 시 ~/.claude/skills/forge/SKILL.md를 다시 읽어 플로우를 복구할 것
 ---
 
 # Forge v5
@@ -31,6 +36,10 @@ description: |
 5. **산출물 필수**: 모든 forge 실행은 최소한 meta.json + research.md + report.md를 산출물 디렉토리에 생성해야 한다. 이 파일들이 없으면 작업 기록이 남지 않는다.
 
 **위 규칙을 위반하면 forge 실행은 실패로 간주된다.**
+
+### 컨텍스트 자가 복구
+
+컴팩트 등으로 이 스킬의 내용이 불완전하다고 판단되면, 각 Step 진입 시 `~/.claude/skills/forge/SKILL.md`를 다시 읽어 플로우를 복구하라. 판단 기준: 현재 Step의 세부 지시사항이 기억나지 않거나, 다음에 무엇을 해야 하는지 불확실할 때.
 
 ---
 
