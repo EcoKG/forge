@@ -1,24 +1,24 @@
 ---
-name: Forge v5
+name: Forge
 description: |
-  사용자가 /forge 커맨드를 입력하거나, 복잡한 멀티파일 개발 작업을 요청할 때 이 스킬을 사용하세요.
-  코딩(기능 구현, 리팩토링, 앱 구축, 버그 수정), 문서화(API docs, README, Swagger),
-  분석(보안 감사, 코드 리뷰, 성능 프로파일링), 인프라(Docker, CI/CD, 배포),
-  설계(아키텍처, 스키마, API 설계) 등 리서치→계획→구현→리뷰→배포 전체 라이프사이클을 자동 수행합니다.
+  복잡한 개발 작업을 체계적으로 수행하는 자율 실행 엔진.
+  리서치→계획→구현→리뷰→QA 전체 라이프사이클을 자동 관리합니다.
 
-  트리거 패턴:
-  - `/forge "요청"` → 명시적 실행
-  - `/forge --direct` → 리서치/플랜 스킵, 바로 실행
-  - `/forge --from plan.md` → 기존 플랜에서 시작
-  - 복잡한 개발 요청 자동 감지 (멀티파일, 멀티스텝, 기능추가, 전면 수정, refactor, build, implement, 처리, 추가, 개발, 변경, 적용, 작업, ~하게 해줘, ~되도록)
+  반드시 이 스킬을 사용하세요:
+  - /forge 커맨드를 입력했을 때
+  - 여러 파일에 걸친 기능 구현, 리팩토링, 앱 구축을 요청할 때
+  - 프론트엔드+백엔드 등 멀티레이어 개발이 필요할 때
+  - 코드 리뷰, 보안 감사, 성능 분석 등 체계적 분석이 필요할 때
+  - API 설계, 아키텍처, 스키마 설계를 요청할 때
+  - 문서화(API docs, README), 인프라(Docker, CI/CD, 배포) 작업을 요청할 때
+  - 단순 질문이나 한 줄 수정이 아닌, 계획과 리서치가 필요한 개발 작업일 때
 
-  [절대 규칙 — 컴팩트 후에도 반드시 유지]
-  (1) Step 1-4 완료 전 코드 생성 금지 (2) 자동트리거 시 AskUserQuestion 확인 후 Step 1 진입 필수
-  (3) --direct는 사용자가 명시적으로 요청한 경우에만 사용 (4) 필수 단계 순서 건너뛰기 금지
-  (5) 컨텍스트 손실 감지 시 ~/.claude/skills/forge/SKILL.md를 다시 읽어 플로우를 복구할 것
+  사용자가 한국어 또는 영어로 개발 요청을 할 때도 작업 복잡도가 높으면
+  자동으로 이 스킬을 사용하세요.
+  컨텍스트 손실 감지 시 ~/.claude/skills/forge/SKILL.md를 다시 읽으세요.
 ---
 
-# Forge v5
+# Forge
 
 > 자율 실행 엔진. 모든 요청 → 리서치 → 계획 → 실행 → 전달.
 > 기본 경로: `~/.claude/skills/forge/`
@@ -113,13 +113,13 @@ Forge는 두 가지 방식으로 활성화된다:
 
 ## 요청 유형 자동 분류
 
-| 유형 | 트리거 키워드 | 플로우 | 에이전트 (`prompts/` 기준) |
+| 유형 | 의미 패턴 (자연어 의도 기반 분류) | 플로우 | 에이전트 (`prompts/` 기준) |
 |---|---|---|---|
-| `code` | bug, fix, implement, refactor, feature, build, create, 구현, 만들어, 고쳐, 수정, 처리, 추가, 개발, 변경, 적용, 작업, 세팅, 연동, 표기, 설치, 제한 | 리서치→계획→구현→리뷰→QA | implementer + code-reviewer + qa-inspector |
-| `docs` | document, write, translate, README, 문서, 작성, 번역 | 리서치→작성→문서 리뷰 | implementer + doc-reviewer |
-| `analysis` | analyze, audit, profile, inspect, 분석, 감사, 검사 | 리서치→보고서 (구현 없음) | analyst |
-| `infra` | deploy, CI/CD, config, environment, 배포, 설정, 환경 | 리서치→계획→실행 (dry-run) | implementer |
-| `design` | architecture, schema, API design, 설계, 아키텍처 | 리서치→설계 문서→리뷰 | analyst (구현은 선택) |
+| `code` | 기존 기능의 수정·개선, 새 기능 구현, 버그 수정, 리팩토링, 앱 구축 등 코드 변경이 수반되는 모든 개발 요청 | 리서치→계획→구현→리뷰→QA | implementer + code-reviewer + qa-inspector |
+| `docs` | 문서 작성, 번역, API 문서화, README 생성 등 텍스트 산출물이 주 목적인 요청 | 리서치→작성→문서 리뷰 | implementer + doc-reviewer |
+| `analysis` | 코드 분석, 보안 감사, 성능 프로파일링, 코드 리뷰 등 조사·보고가 주 목적인 요청 | 리서치→보고서 (구현 없음) | analyst |
+| `infra` | 배포, CI/CD 파이프라인, 환경 설정, Docker, 서버 구성 등 인프라 작업 요청 | 리서치→계획→실행 (dry-run) | implementer |
+| `design` | 아키텍처 설계, DB 스키마, API 설계 등 설계 문서가 주 산출물인 요청 | 리서치→설계 문서→리뷰 | analyst (구현은 선택) |
 
 ## 규모 감지 (`--scale auto`)
 

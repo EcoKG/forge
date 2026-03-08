@@ -1,0 +1,17 @@
+{
+  "slug": "forge-description",
+  "created": "2026-03-08T14:00",
+  "type": "code",
+  "scale": "small",
+  "lang": "ko",
+  "exec_strategy": "subagent",
+  "issue": "description 키워드 무한 증가 문제 해결 — 의미 기반 트리거로 전환, name에서 v5 제거",
+  "status": "completed",
+  "step": "finalize_done",
+  "steps_completed": ["init", "research", "plan", "checkpoint", "tasks", "agent_setup", "execute", "finalize"],
+  "model_override": null,
+  "cost": "medium",
+  "review_count": 1,
+  "phases": 1,
+  "checklist_fallback": null
+}
